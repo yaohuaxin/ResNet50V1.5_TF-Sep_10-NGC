@@ -270,6 +270,7 @@ class ResnetModel(object):
                     tf.summary.scalar('learning_rate', learning_rate)
 
                     optimizer = tf.train.MomentumOptimizer(learning_rate=learning_rate, momentum=params["momentum"])
+                    optimizer = tf.train.experimental.enable_mixed_precision_graph_rewrite(optimizer)
 
                     if params["apply_loss_scaling"]:
 
